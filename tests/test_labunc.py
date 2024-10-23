@@ -1,5 +1,6 @@
 from unc import LabUnc
 
+
 def test_add():
     assert LabUnc(10, 1) + LabUnc(10, 2) == LabUnc(20, 3)
     assert LabUnc(20, 0.1) + LabUnc(10, 0.1) == LabUnc(30, 0.2)

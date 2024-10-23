@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-import sys
 import math
+import sys
 from typing import Any, TypeVar
-
 
 if sys.version_info < (3, 11):
     from typing_extensions import Self
@@ -16,9 +15,12 @@ class LabUnc:
     @staticmethod
     def combine(a: float, b: float) -> float:
         return a + b
-    
+
     rounding_rule = 1.0
-    "This is the number to round at for display, lab rule is 1, particle physics uses 3.54"
+    """
+    This is the number to round at for display,
+    lab rule is 1, particle physics uses 3.54.
+    """
 
     def __init__(self, number: float, uncertainty: float = 0.0 ) -> None:
         self.n = number
@@ -46,18 +48,18 @@ class LabUnc:
     def __eq__(self, other: Any) -> bool:
         return abs(self.n - other.n) < 0.0000001 and abs(self.s - other.s) < 0.0000001
 
-    def __add__(self: Self, other: "LabUnc") -> Self:
+    def __add__(self: Self, other: LabUnc) -> Self:
         return self.__class__(self.n + other.n, self.combine(self.s, other.s))
 
-    def __sub__(self: Self, other: "LabUnc") -> Self:
+    def __sub__(self: Self, other: LabUnc) -> Self:
         return self.__class__(self.n - other.n, self.combine(self.s, other.s))
 
-    def __mul__(self: Self, other: "LabUnc") -> Self:
+    def __mul__(self: Self, other: LabUnc) -> Self:
         C = self.n * other.n
         δC = C * self.combine(self.s / self.n, other.s / other.n)
         return type(self)(C, δC)
 
-    def __truediv__(self: Self, other: "LabUnc") -> Self:
+    def __truediv__(self: Self, other: LabUnc) -> Self:
         C = self.n / other.n
         δC = C * self.combine(self.s / self.n, other.s / other.n)
         return self.__class__(C, δC)

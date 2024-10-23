@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "my_project"
+name = "unc"
 version = "0.1.0"
 requires-python = ">=3.7"
 dependencies = [
@@ -11,10 +11,14 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-test = [
-    "pytest", 
+tests = [
+    "pytest",
     "hypothesis"
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/unc"]
+
 docs = [
     "sphinx",
     "furo",

@@ -13,7 +13,8 @@ dependencies = [
 [project.optional-dependencies]
 tests = [
     "pytest",
-    "hypothesis"
+    "hypothesis",
+    "uncertainties"
 ]
 
 [tool.hatch.build.targets.wheel]

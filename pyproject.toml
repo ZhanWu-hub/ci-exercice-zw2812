@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "my_project"
+version = "0.1.0"
+requires-python = ">=3.7"
+dependencies = [
+    "typing_extensions; python_version < '3.11'"
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest", 
+    "hypothesis"
+]
+docs = [
+    "sphinx",
+    "furo",
+    "myst-parser"
+]
+

@@ -21,9 +21,7 @@ jobs:
         run: |
           python -m venv venv
           . venv/bin/activate
-	  python -m pip install --upgrade pip
           pip install pre-commit
-	  pip install .
       - name: Run pre-commit
         run: pre-commit run --all-files
       - name: Show formatting diff on failure
@@ -45,9 +43,6 @@ jobs:
         run: |
           python -m venv venv
           . venv/bin/activate
-	  python -m pip install --upgrade pip
-	  pip install nox
-	  pip install .
           pip install .[tests]
       - name: Run tests
         run: |

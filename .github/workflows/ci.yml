@@ -12,11 +12,14 @@ jobs:
   # Formatting Job
   format:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.13]  # Minimum and maximum Python versions
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: 3.11  # Use a version with pre-commit support
+           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
           python -m venv venv

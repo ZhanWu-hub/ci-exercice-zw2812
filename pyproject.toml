@@ -16,13 +16,13 @@ tests = [
     "hypothesis",
     "uncertainties"
 ]
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/unc"]
 dev = [
     "pre-commit",
     "nox"
 ]
+[tool.hatch.build.targets.wheel]
+packages = ["src/unc"]
+
 docs = [
     "sphinx",
     "furo",

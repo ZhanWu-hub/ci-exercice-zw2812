@@ -22,6 +22,8 @@ jobs:
           python -m venv venv
           . venv/bin/activate
           pip install pre-commit
+      - name: Install the package
+        run: python -m pip install .[dev]
       - name: Run pre-commit
         run: pre-commit run --all-files
       - name: Show formatting diff on failure
@@ -39,6 +41,8 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Install the package
+        run: python -m pip install .[dev]
       - name: Install dependencies
         run: |
           python -m venv venv
